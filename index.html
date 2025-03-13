@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Свадебный сайт Анны и Никиты">
+    <meta name="keywords" content="свадьба, Анна, Никита, Воронеж, Сабуров Холл">
+    <title>Свадебный сайт Анны и Никиты</title>
+    <!-- Подключение шрифтов -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,900;1,400&display=swap" rel="stylesheet">
+    <!-- Подключение Font Awesome для иконок -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Подключение Яндекс Карт -->
+    <script src="https://api-maps.yandex.ru/2.1/?apikey=YOUR_YANDEX_MAPS_API_KEY&lang=ru_RU" type="text/javascript"></script>
+    <!-- Подключение стилей -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Аудио элемент -->
+    <audio id="background-audio" src="audio/mainaudio.mp3" loop></audio>
+
+    <!-- Кнопка для управления аудио -->
+    <button id="audio-control" class="audio-button">
+        <i class="fa fa-volume-up"></i>
+    </button>
+
+    <div class="hero-image">
+        <div class="overlay">
+            <div class="text-box">
+                <h1>Save the Date</h1>
+            </div>
+            <div>
+                <h2>Анна & Никита</h2>
+            </div>
+            <div class="text-box">
+                <p>03.05.2025</p>
+            </div>
+        </div>
+    </div>
+
+    <main>
+        <!-- Остальные секции вашего сайта -->
+
+        <section class="countdown-section">
+            <div class="counter-container">
+                <div class="countdown">
+                    <div class="countdown-item">
+                        <span id="days">56</span>
+                        <span>дней</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span id="hours">23</span>
+                        <span>часов</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span id="minutes">10</span>
+                        <span>минут</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span id="seconds">11</span>
+                        <span>секунд</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="location">
+            <h3 class="location-title">Место проведения</h3>
+            <div class="location-box">
+                <div class="text-box">
+                    <p>Время: 17:00</p>
+                    <p>Название заведения: Сабуров Холл</p>
+                    <p>Адрес: ул. Пролетарская, 87в, 7-й этаж, Воронеж, Воронежская обл., 394036</p>
+                </div>
+                <div id="map" class="map"></div>
+            </div>
+        </section>
+
+        <section class="dress-code">
+            <div class="text-box">
+                <h3>Дресс-код</h3>
+            </div>
+            <p class="text-paragraph">Будем благодарны, если при выборе наряда на наше торжество вы придержитесь собственного стиля одежды.</p>
+        </section>
+
+        <section class="gifts">
+            <div class="text-box">
+                <h3>Пожелания по подаркам</h3>
+            </div>
+            <p class="text-paragraph">Ваше присутствие в день нашей свадьбы - самый значимый подарок для нас! Мы понимаем, что дарить цветы на свадьбу - это традиция, но мы не сможем насладиться их красотой в полной мере... Будем рады любой другой альтернативе (вино или в денежном эквиваленте).</p>
+        </section>
+
+        <section class="rsvp">
+            <div class="text-box">
+                <h3>Ответ на приглашение</h3>
+            </div>
+            <form class="rsvp-form" action="submit_response.php" method="POST">
+                <input type="hidden" name="csrf_token" value="<?php echo $_SESSION['csrf_token']; ?>">
+                <div class="form-group">
+                    <label for="name">Имя:</label>
+                    <input type="text" id="name" name="name" required aria-required="true">
+                </div>
+                <div class="form-group">
+                    <label for="attendance">Вы придете?</label>
+                    <select id="attendance" name="attendance" required aria-required="true">
+                        <option value="">Выберите один вариант</option>
+                        <option value="yes">Да</option>
+                        <option value="no">Нет</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="guests">Количество гостей:</label>
+                    <input type="number" id="guests" name="guests" min="1" value="1" aria-required="true">
+                </div>
+                <div class="form-group">
+                    <label for="message">Сообщение для пары:</label>
+                    <textarea id="message" name="message"></textarea>
+                </div>
+                <button type="submit">Отправить</button>
+            </form>
+        </section>
+
+        <section class="ps">
+            <div class="text-box">
+                <h3>P.S.</h3>
+            </div>
+            <p class="text-paragraph">Будем благодарны, если вы воздержитесь от криков "Горько" на празднике, ведь поцелуй — это знак выражения чувств, он не может быть по заказу. Мы с нетерпением ждем встречи с вами!</p>
+        </section>
+    </main>
+
+    <script>
+        // Инициализация аудио
+        var audio = document.getElementById('background-audio');
+        var controlButton = document.getElementById('audio-control');
+
+        // Функция для воспроизведения аудио
+        function playAudio() {
+            audio.muted = false;
+            audio.play().catch(function(error) {
+                console.log('Воспроизведение аудио заблокировано:', error);
+            });
+        }
+
+        // Функция для паузы аудио
+        function pauseAudio() {
+            audio.pause();
+        }
+
+        // Обработчик события для кнопки
+        controlButton.addEventListener('click', function() {
+            if (audio.paused) {
+                playAudio();
+                controlButton.innerHTML = '<i class="fa fa-volume-mute"></i>';
+            } else {
+                pauseAudio();
+                controlButton.innerHTML = '<i class="fa fa-volume-up"></i>';
+            }
+        });
+
+        // Попытка воспроизвести аудио при загрузке страницы
+        window.onload = function() {
+            playAudio();
+        };
+    </script>
+
+    <script src="script.js"></script>
+</body>
+</html>
