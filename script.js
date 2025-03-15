@@ -42,6 +42,15 @@ updateCountdown();
 // Инициализация Яндекс Карт
 ymaps.ready(init);
 
+function resizeMap() {
+    var mapContainer = document.getElementById('map');
+    var mapWidth = mapContainer.offsetWidth;
+    var mapHeight = mapContainer.offsetHeight;
+    myMap.container.fitToViewport();
+}
+
+window.addEventListener('resize', resizeMap);
+
 function init() {
     var myMap = new ymaps.Map("map", {
         center: [51.669257, 39.222045], // Координаты Сабуров Холл
