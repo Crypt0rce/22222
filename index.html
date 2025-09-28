@@ -3,168 +3,95 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Свадебный сайт Анны и Никиты">
-    <meta name="keywords" content="свадьба, Анна, Никита, Воронеж, Сабуров Холл">
-    <title>Свадебный сайт Анны и Никиты</title>
-    <!-- Подключение шрифтов -->
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,900;1,400&display=swap" rel="stylesheet">
-    <!-- Подключение Font Awesome для иконок -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Подключение Яндекс Карт -->
-    <script src="https://api-maps.yandex.ru/2.1/?apikey=YOUR_YANDEX_MAPS_API_KEY&lang=ru_RU" type="text/javascript"></script>
-    <!-- Подключение стилей -->
+    <title>HandCraftHub — Магазин эксклюзивных украшений ручной работы</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Аудио элемент -->
-    <audio id="background-audio" src="audio/mainaudio.mp3" loop></audio>
+    <!-- Верхнее меню навигации -->
+    <nav class="top-nav">
+        <ul>
+            <li><a href="#">Главная</a></li>
+            <li><a href="#collections">Коллекции</a></li>
+            <li><a href="#makers">О мастерах</a></li>
+            <li><a href="#contact">Контакты</a></li>
+            <li><a href="#cart" class="cart-button">
+                <img src="cart-icon.png" alt="Корзина"/>
+                <span class="cart-count">(0)</span>
+            </a></li>
+        </ul>
+    </nav>
 
-    <!-- Кнопка для управления аудио -->
-    <button id="audio-control" class="audio-button">
-        <i class="fa fa-volume-up"></i>
-    </button>
+    <!-- Шапка сайта -->
+    <header class="site-header">
+        <h1>HandCraftHub</h1>
+    </header>
 
-    <div class="hero-image">
-        <div class="overlay">
-            <div class="text-box">
-                <h1>День свадьбы</h1>
-            </div>
-            <div>
-                <h2>Анна & Никита</h2>
-            </div>
-            <div class="text-box">
-                <h5>03.05.2025</h5>
-            </div>
-        </div>
+    <!-- Основной контент -->
+    <div class="container">
+        <main>
+            <!-- Первый товар -->
+            <article class="product-item">
+                <img src="https://via.placeholder.com/300x200.jpg?text=Kolco" alt="Авторское кольцо">
+                <h3>Эксклюзивное кольцо ручной работы</h3>
+                <p>Цена: 1500 рублей</p>
+                <button data-product-id="ring" class="add-to-cart-btn">Добавить в корзину</button>
+            </article>
+            
+            <!-- Второй товар -->
+            <article class="product-item">
+                <img src="https://via.placeholder.com/300x200.jpg?text=Bracelet" alt="Авторский браслет">
+                <h3>Искусственный камень и серебро</h3>
+                <p>Цена: 2500 рублей</p>
+                <button data-product-id="bracelet" class="add-to-cart-btn">Добавить в корзину</button>
+            </article>
+            
+            <!-- Третий товар -->
+            <article class="product-item">
+                <img src="https://via.placeholder.com/300x200.jpg?text=Earrings" alt="Авторские серьги">
+                <h3>Свободолюбивые серьги с кристаллами</h3>
+                <p>Цена: 1800 рублей</p>
+                <button data-product-id="earrings" class="add-to-cart-btn">Добавить в корзину</button>
+            </article>
+            
+            <!-- Четвёртый товар -->
+            <article class="product-item">
+                <img src="https://via.placeholder.com/300x200.jpg?text=Pendant" alt="Авторский кулон">
+                <h3>Деревянный кулон ручной работы</h3>
+                <p>Цена: 1200 рублей</p>
+                <button data-product-id="pendant" class="add-to-cart-btn">Добавить в корзину</button>
+            </article>
+        </main>
     </div>
 
-    <main>
-        <!-- Остальные секции вашего сайта -->
+    <!-- Подвал сайта -->
+    <footer class="site-footer">
+        HandCraftHub © 2023. All rights reserved.
+    </footer>
 
-        <section class="countdown-section">
-            <div class="counter-container">
-                <div class="countdown">
-                    <div class="countdown-item">
-                        <span id="days">56</span>
-                        <span>дней</span>
-                    </div>
-                    <div class="countdown-item">
-                        <span id="hours">23</span>
-                        <span>часов</span>
-                    </div>
-                    <div class="countdown-item">
-                        <span id="minutes">10</span>
-                        <span>минут</span>
-                    </div>
-                    <div class="countdown-item">
-                        <span id="seconds">11</span>
-                        <span>секунд</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="location">
-            <h3 class="location-title">Место проведения</h3>
-            <div class="location-box">
-                <div class="text-box">
-                    <h6>
-                    <p>Время: 17:00</p>
-                    <p>Название заведения: Сабуров Холл</p>
-                    <p>Адрес: ул. Пролетарская, 87в, 7-й этаж, Воронеж, Воронежская обл., 394036</p>
-                    </h6>
-                </div>
-                <div id="map" class="map"></div>
-            </div>
-        </section>
-
-        <section class="dress-code">
-            <div class="text-box">
-                <h3>Дресс-код</h3>
-            </div>
-            <p class="text-paragraph">Будем благодарны, если при выборе наряда на наше торжество вы придержитесь собственного стиля одежды.</p>
-        </section>
-
-        <section class="gifts">
-            <div class="text-box">
-                <h3>Пожелания по подаркам</h3>
-            </div>
-            <p class="text-paragraph">Ваше присутствие в день нашей свадьбы - самый значимый подарок для нас! Мы понимаем, что дарить цветы на свадьбу - это традиция, но мы не сможем насладиться их красотой в полной мере... Будем рады любой другой альтернативе (вино или в денежном эквиваленте).</p>
-        </section>
-
-        <section class="rsvp">
-            <div class="text-box">
-                <h3>Ответ на приглашение</h3>
-            </div>
-            <form class="rsvp-form" action="https://formspree.io/f/xjkykwyk" method="POST">
-                <input type="hidden" name="csrf_token" value="<?php echo $_SESSION['csrf_token']; ?>">
-                <div class="form-group">
-                    <label for="name">Имя:</label>
-                    <input type="text" id="name" name="name" required aria-required="true">
-                </div>
-                <div class="form-group">
-                    <label for="attendance">Вы придете?</label>
-                    <select id="attendance" name="attendance" required aria-required="true">
-                        <option value="">Выберите один вариант</option>
-                        <option value="yes">Да</option>
-                        <option value="no">Нет</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="guests">Количество гостей:</label>
-                    <input type="number" id="guests" name="guests" min="1" value="1" aria-required="true">
-                </div>
-                <div class="form-group">
-                    <label for="message">Сообщение для пары:</label>
-                    <textarea id="message" name="message"></textarea>
-                </div>
-                <button type="submit">Отправить</button>
-            </form>
-        </section>
-
-        <section class="ps">
-            <div class="text-box">
-                <h3>P.S.</h3>
-            </div>
-            <p class="text-paragraph">Будем благодарны, если вы воздержитесь от криков "Горько" на празднике, ведь поцелуй — это знак выражения чувств, он не может быть по заказу. Мы с нетерпением ждем встречи с вами!</p>
-        </section>
-    </main>
-
+    <!-- JS-код для корзины -->
     <script>
-        // Инициализация аудио
-        var audio = document.getElementById('background-audio');
-        var controlButton = document.getElementById('audio-control');
+        // Массив для хранения корзины
+        let cartItems = [];
 
-        // Функция для воспроизведения аудио
-        function playAudio() {
-            audio.muted = false;
-            audio.play().catch(function(error) {
-                console.log('Воспроизведение аудио заблокировано:', error);
+        // Обработчики кликов на кнопки "Добавить в корзину"
+        document.querySelectorAll('.add-to-cart-btn').forEach(button => {
+            button.addEventListener('click', () => {
+                const productId = button.dataset.productId;
+                addItemToCart(productId);
             });
-        }
-
-        // Функция для паузы аудио
-        function pauseAudio() {
-            audio.pause();
-        }
-
-        // Обработчик события для кнопки
-        controlButton.addEventListener('click', function() {
-            if (audio.paused) {
-                playAudio();
-                controlButton.innerHTML = '<i class="fa fa-volume-mute"></i>';
-            } else {
-                pauseAudio();
-                controlButton.innerHTML = '<i class="fa fa-volume-up"></i>';
-            }
         });
 
-        // Попытка воспроизвести аудио при загрузке страницы
-        window.onload = function() {
-            playAudio();
-        };
-    </script>
+        // Добавляем товар в корзину
+        function addItemToCart(productId) {
+            cartItems.push(productId);
+            updateCartCount();
+        }
 
-    <script src="script.js"></script>
+        // Обновляем счётчик товаров в корзине
+        function updateCartCount() {
+            const countEl = document.querySelector('.cart-count');
+            countEl.textContent = `(${cartItems.length})`;
+        }
+    </script>
 </body>
 </html>
